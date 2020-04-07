@@ -1,0 +1,13 @@
+.home {
+  display: flex;
+
+  .home__search-result {
+    border-right: 1px solid #d3d3d3;
+    width: 20%;
+    height: calc(100vh - 4em);
+  }
+
+  .home__repository-selected {
+    width: 80%;
+  }
+}
