@@ -1,14 +1,17 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import Home from './Pages/Home/home';
+import Form from './Pages/Form/form';
 import Header from './Components/Header/header';
-import Footer from './Components/Footer/footer';
 
 function App() {
   return (
     <>
       <Header />
-      <Home />
-      <Footer />
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route path="/form" component={Form} />
+      </Switch>
     </>
   );
 }
