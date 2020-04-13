@@ -1,0 +1,19 @@
+.home {
+  position: relative;
+  display: flex;
+
+  .home__search-result {
+    position: fixed;
+    border-right: 1px solid #d3d3d3;
+    width: 20%;
+    height: calc(100vh - 4em);
+    margin-top: 4em;
+  }
+
+  .home__repository-selected {
+    position: relative;
+    width: 80%;
+    margin-top: 4em;
+    margin-left: 20%;
+  }
+}

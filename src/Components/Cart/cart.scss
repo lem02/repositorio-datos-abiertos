@@ -1,0 +1,25 @@
+.cart {
+  margin: 0 3em;
+
+  .cart__icon {
+    position: relative;
+
+    i {
+      font-size: 1.7em;
+    }
+
+    span {
+      padding: 0.1em 0.3em;
+      border-radius: 50%;
+      background-color: #e9e9e9;
+      position: absolute;
+      top: -0.4em;
+      right: -0.7em;
+      font-size: 0.9em;
+      font-weight: bold;
+    }
+  }
+
+  .cart__items {
+  }
+}
