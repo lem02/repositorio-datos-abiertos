@@ -12,12 +12,19 @@ export const options = {
 
 const Request = {
   get: (path, callback) => {
-    axios.get(`${MAIN_URL}${path}`, options).then(callback).catch(console.log);
+    axios
+      .get(`${MAIN_URL}${path}`, options)
+      .then((res) => {
+        callback(res.data);
+      })
+      .catch(console.log);
   },
   post: (path, data, callback) => {
     axios
       .post(`${MAIN_URL}/${path}`, options, data)
-      .then(callback)
+      .then((res) => {
+        callback(res.data);
+      })
       .catch(console.log);
   },
 };
