@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
-import RepoDescription from '../../Components/RepoDescription/repoDescription';
-import RepoData from '../../Components/RepoData/repoData';
-import RepoDictionary from '../../Components/RepoDictionary/repoDictionary';
-import RepoAssociated from '../../Components/RepoAssociated/repoAssociated';
+import RepoDescription from '../RepoDescription/repoDescription';
+import RepoData from '../RepoData/repoData';
+import RepoDictionary from '../RepoDictionary/repoDictionary';
+import RepoAssociated from '../RepoAssociated/repoAssociated';
 import './repository.scss';
 
-const Repository = () => {
+const Repository = ({ repoSelected }) => {
   const [content, setContent] = useState('description');
 
   return (
     <div className="repository">
-      <h2 className="repository__title">Titulo del repositorio</h2>
+      {repoSelected && (
+        <h2 className="repository__title">{repoSelected.titulo}</h2>
+      )}
       <div className="repository__content-selector">
         <button
           onClick={() => {
@@ -42,7 +44,9 @@ const Repository = () => {
         </button>
       </div>
       <div className="repository__content">
-        {content === 'description' && <RepoDescription />}
+        {content === 'description' && (
+          <RepoDescription repoSelected={repoSelected} />
+        )}
         {content === 'data' && <RepoData />}
         {content === 'dictionary' && <RepoDictionary />}
         {content === 'associated' && <RepoAssociated />}
