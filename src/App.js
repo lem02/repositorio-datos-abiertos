@@ -9,8 +9,8 @@ function App() {
     <>
       <Header />
       <Switch>
-        <Route path="/" component={Home} />
-        <Route path="/form" component={Form} />
+        <Route path="/" exact component={Home} />
+        <Route path="/form" exact component={Form} />
       </Switch>
     </>
   );

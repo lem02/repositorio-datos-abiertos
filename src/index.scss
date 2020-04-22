@@ -1,3 +1,5 @@
+@import './Styles/Animations/animations.scss';
+
 * {
   margin: 0;
   padding: 0;
@@ -7,20 +9,42 @@
     sans-serif;
 }
 
+:root {
+  --primary: #175e18;
+  --primary-alt: #154216;
+  --primary-light: #008102;
+  --white: #fff;
+  --white-alt: #f0f0f0;
+  --black: #3a3a3a;
+  --gray: #646464;
+  --gray-light: #d3d3d3;
+  --warning: #d60000;
+}
+
 body {
   position: relative;
-  color: #222222;
+  color: var(--black);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--primary);
 }
 
 button {
   padding: 0.6em;
   border: 0;
   border-radius: 3px;
-  color: white;
-  background-color: #646464;
+  color: var(--white);
+  background-color: var(--primary);
   cursor: pointer;
 
   &:hover {
-    background-color: #474747;
+    box-shadow: 0 0 3px 0 var(--primary-alt);
+    background-color: var(--primary-alt);
   }
 }

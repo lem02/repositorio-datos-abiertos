@@ -1,13 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './repoDescription.scss';
 
 const RepoDescription = ({ repoSelected }) => {
-  useEffect(() => {
-    if (repoSelected) {
-      console.log(repoSelected);
-    }
-  }, [repoSelected]);
-
   return (
     <div className="repo-description">
       {repoSelected && (

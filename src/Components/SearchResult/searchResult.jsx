@@ -1,15 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './searchResult.scss';
 
 const SearchResult = ({ data, repoSelected, setRepoSelected }) => {
-  useEffect(() => {
-    if (data) {
-      console.log(data);
-    }
-  }, [data]);
-
   return (
-    <section className="search-result">
+    <div className="search-result">
       {data &&
         data.map((repo, index) => (
           <article
@@ -21,14 +15,13 @@ const SearchResult = ({ data, repoSelected, setRepoSelected }) => {
               setRepoSelected(repo);
             }}
           >
-            <img src="" alt="" />
             <div className="search-result__item__content">
               <h3>{repo.titulo}</h3>
               <p>{`Última actualización: ${repo.ult_actualizacion}`}</p>
             </div>
           </article>
         ))}
-    </section>
+    </div>
   );
 };
 
