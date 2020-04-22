@@ -3,17 +3,22 @@
   display: flex;
 
   .home__search-result {
-    position: fixed;
-    border-right: 1px solid #d3d3d3;
     width: 20%;
-    height: calc(100vh - 4em);
-    margin-top: 4em;
+    height: calc(100vh - 6em);
+    margin: 1em;
+    margin-right: 0.5em;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 2px var(--gray-light);
   }
 
   .home__repository-selected {
     position: relative;
     width: 80%;
-    margin-top: 4em;
-    margin-left: 20%;
+    height: calc(100vh - 6em);
+    margin: 1em;
+    margin-left: 0.5em;
+    border-radius: 5px;
+    overflow-y: scroll;
+    box-shadow: 0 0 5px 2px var(--gray-light);
   }
 }
