@@ -1,25 +1,109 @@
+.cart:hover > .cart__container {
+  display: block;
+}
+
 .cart {
+  position: relative;
   margin: 0 3em;
 
   .cart__icon {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2em;
+    height: 2em;
 
     i {
+      color: var(--primary);
       font-size: 1.7em;
     }
 
     span {
       padding: 0.1em 0.3em;
       border-radius: 50%;
-      background-color: #e9e9e9;
+      background-color: var(--gray-light);
+      color: var(--primary);
       position: absolute;
       top: -0.4em;
       right: -0.7em;
       font-size: 0.9em;
       font-weight: bold;
     }
+
+    &--move i {
+      animation: Beat 1s infinite;
+    }
+  }
+
+  .cart__container {
+    display: none;
+    position: absolute;
+    right: -0.5em;
+    z-index: 1;
+    width: 20em;
+    box-shadow: 0 0 5px 2px var(--gray-light);
+    border-radius: 3px;
+    background-color: var(--white);
   }
 
   .cart__items {
+    min-height: 10em;
+
+    .cart__item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em;
+
+      p {
+        width: 85%;
+      }
+
+      button {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 2em;
+        height: 2em;
+        background-color: inherit;
+
+        &:hover {
+          box-shadow: none;
+        }
+      }
+
+      i {
+        color: var(--warning);
+        font-size: 1.5em;
+        transition: all ease-in-out 0.1s;
+
+        &:hover {
+          font-size: 1.7em;
+        }
+      }
+    }
+  }
+
+  .cart__total {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4em;
+    border-top: 2px solid var(--gray-light);
+
+    a {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 0.5em 1em;
+      border-radius: 4px;
+      text-decoration: none;
+
+      &:hover {
+        box-shadow: 0 0 3px 0 var(--primary-alt);
+        background-color: var(--primary-alt);
+      }
+    }
   }
 }
