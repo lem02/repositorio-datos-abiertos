@@ -29,12 +29,6 @@ const SiteContextContainer = ({ children }) => {
   };
 
   useEffect(() => {
-    if (order.length > 0) {
-      console.log(order);
-    }
-  }, [order]);
-
-  useEffect(() => {
     if (dataResult && dataResult.length > 0) {
       setRepoSelected(dataResult[0]);
     }
