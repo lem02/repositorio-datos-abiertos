@@ -15,7 +15,7 @@ const Cart = () => {
         <span>{order.length}</span>
       </div>
       <div className="cart__container">
-        <div className="cart__items">
+        <div className="cart__items scroll-styles">
           {order.map((item, index) => (
             <article key={index} className="cart__item">
               <p>{item.titulo}</p>
