@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import RepoDescription from '../RepoDescription/repoDescription';
 import RepoData from '../RepoData/repoData';
 import RepoDictionary from '../RepoDictionary/repoDictionary';
@@ -8,7 +8,16 @@ import './repository.scss';
 
 const Repository = ({ repoSelected }) => {
   const [content, setContent] = useState('description');
-  const { addItem } = useContext(SiteContext);
+  const { order, addItem } = useContext(SiteContext);
+  const [message, setMessage] = useState();
+
+  useEffect(() => {
+    if (repoSelected && order.find((item) => item.id === repoSelected.id)) {
+      setMessage('Ya está en el carrito');
+    } else {
+      setMessage('Agregar a la solicitud');
+    }
+  }, [order, repoSelected]);
 
   return (
     <div className="repository">
@@ -16,7 +25,7 @@ const Repository = ({ repoSelected }) => {
         <header className="repository__header">
           <h2 className="repository__title">{repoSelected.titulo}</h2>
           <button onClick={() => addItem(repoSelected)}>
-            Agregar a la solicitud
+            {message}
             <i className="fa fa-shopping-cart" />
           </button>
         </header>

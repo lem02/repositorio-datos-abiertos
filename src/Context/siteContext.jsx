@@ -7,14 +7,27 @@ const SiteContextContainer = ({ children }) => {
   const [dataResult, setDataResult] = useState();
   const [repoSelected, setRepoSelected] = useState();
   const stateReducer = (prevItems, data) => {
-    if (data.action === 'add') {
-      if (prevItems.indexOf(data.item) === -1) {
-        return [...prevItems, data.item];
-      } else {
-        return prevItems;
-      }
-    } else if (data.action === 'delete') {
-      return prevItems.filter((item) => item !== data.item);
+    switch (data.action) {
+      case 'loadData':
+        return data.items;
+      case 'add':
+        if (prevItems.find((item) => item.id === data.item.id)) {
+          return prevItems;
+        } else {
+          localStorage.setItem(
+            'order',
+            JSON.stringify([...prevItems, data.item])
+          );
+          return [...prevItems, data.item];
+        }
+      case 'delete':
+        localStorage.setItem(
+          'order',
+          JSON.stringify(prevItems.filter((item) => item !== data.item))
+        );
+        return prevItems.filter((item) => item !== data.item);
+      default:
+        break;
     }
   };
   const initialState = [];
@@ -27,6 +40,15 @@ const SiteContextContainer = ({ children }) => {
   const deleteItem = (item) => {
     setOrder({ action: 'delete', item });
   };
+
+  useEffect(() => {
+    if (localStorage.getItem('order')) {
+      setOrder({
+        action: 'loadData',
+        items: JSON.parse(localStorage.getItem('order')),
+      });
+    }
+  }, []);
 
   useEffect(() => {
     if (dataResult && dataResult.length > 0) {
