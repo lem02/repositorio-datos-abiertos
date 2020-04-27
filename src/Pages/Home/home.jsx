@@ -9,14 +9,14 @@ const Home = () => {
 
   return (
     <section className="home">
-      <section className="home__search-result">
+      <section className="home__search-result scroll-styles">
         <SearchResult
           data={dataResult}
           repoSelected={repoSelected}
           setRepoSelected={setRepoSelected}
         />
       </section>
-      <section className="home__repository-selected">
+      <section className="home__repository-selected scroll-styles">
         <Repository repoSelected={repoSelected} />
       </section>
     </section>
