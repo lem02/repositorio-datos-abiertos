@@ -50,6 +50,13 @@
   .cart__items {
     height: 15em;
 
+    .cart__items__empty {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     .cart__item {
       display: flex;
       justify-content: space-between;

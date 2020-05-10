@@ -11,7 +11,7 @@ const RepoDescription = ({ repoSelected }) => {
             <p>{repoSelected.descripcion}</p>
           </div>
           <div className="repo-description__section">
-            <h3>Última actialización</h3>
+            <h3>Última actualización</h3>
             <p>{repoSelected.ult_actualizacion}</p>
           </div>
           <div className="repo-description__section">

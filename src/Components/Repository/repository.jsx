@@ -15,7 +15,7 @@ const Repository = ({ repoSelected }) => {
     if (repoSelected && order.find((item) => item.id === repoSelected.id)) {
       setMessage('Ya está en el carrito');
     } else {
-      setMessage('Agregar a la solicitud');
+      setMessage('Agregar al carrito de datos');
     }
   }, [order, repoSelected]);
 
@@ -57,7 +57,7 @@ const Repository = ({ repoSelected }) => {
             setContent('associated');
           }}
         >
-          Repositorios relacionados
+          Tableros relacionados
         </button>
       </div>
       <div className="repository__content">
