@@ -35,6 +35,13 @@ h6 {
   color: var(--primary);
 }
 
+input {
+  font-size: 1em;
+  color: var(--black);
+  outline: none;
+  border: 1px solid var(--black);
+}
+
 button {
   padding: 0.6em;
   border: 0;
@@ -67,4 +74,12 @@ button {
     border-radius: 10px;
     margin: 1em 0;
   }
+}
+
+.warning {
+  color: #d60000;
+}
+
+.hide {
+  display: none;
 }
