@@ -1,23 +1,2 @@
 .home {
-  position: relative;
-  display: flex;
-
-  .home__search-result {
-    width: 20%;
-    height: calc(100vh - 6em);
-    margin: 1em;
-    margin-right: 0.5em;
-    border-radius: 5px;
-    box-shadow: 0 0 5px 2px var(--gray-light);
-  }
-
-  .home__repository-selected {
-    position: relative;
-    width: 80%;
-    height: calc(100vh - 6em);
-    margin: 1em;
-    margin-left: 0.5em;
-    border-radius: 5px;
-    box-shadow: 0 0 5px 2px var(--gray-light);
-  }
 }
