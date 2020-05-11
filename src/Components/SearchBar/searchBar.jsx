@@ -1,21 +1,15 @@
-import React, { useState, useContext } from 'react';
-import { SiteContext } from '../../Context/siteContext';
-import Request from '../../Requests/apiRequests';
+import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import './searchBar.scss';
 
-const SearchBar = () => {
-  const { setDataResult } = useContext(SiteContext);
+const SearchBar = ({ history }) => {
   const [search, setSearch] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    Request.get(`/findbykey/${search}`, (res) => {
-      if (res.length < 1) {
-        window.alert(`No se encontraron resultados para: ${search}`);
-      } else {
-        setDataResult(res);
-      }
-    });
+    if (search && search !== '') {
+      history.push(`/repository/${search}`);
+    }
   };
 
   return (
@@ -32,4 +26,4 @@ const SearchBar = () => {
     </form>
   );
 };
-export default SearchBar;
+export default withRouter(SearchBar);

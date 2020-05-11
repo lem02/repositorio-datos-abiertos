@@ -1,11 +1,9 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext } from 'react';
 import { useEffect, useReducer } from 'react';
 
 export const SiteContext = createContext(null);
 
 const SiteContextContainer = ({ children }) => {
-  const [dataResult, setDataResult] = useState();
-  const [repoSelected, setRepoSelected] = useState();
   const stateReducer = (prevItems, data) => {
     switch (data.action) {
       case 'loadData':
@@ -50,17 +48,7 @@ const SiteContextContainer = ({ children }) => {
     }
   }, []);
 
-  useEffect(() => {
-    if (dataResult && dataResult.length > 0) {
-      setRepoSelected(dataResult[0]);
-    }
-  }, [dataResult]);
-
   const store = {
-    dataResult,
-    setDataResult,
-    repoSelected,
-    setRepoSelected,
     order,
     setOrder,
     addItem,
