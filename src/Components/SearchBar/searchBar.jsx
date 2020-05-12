@@ -1,10 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
-import { SiteContext } from '../../Context/siteContext';
 import './searchBar.scss';
 
 const SearchBar = ({ history }) => {
-  const { breakpoint } = useContext(SiteContext);
   const [search, setSearch] = useState();
   const [showForm, setShowForm] = useState();
 
