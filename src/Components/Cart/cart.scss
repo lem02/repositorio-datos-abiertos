@@ -1,10 +1,12 @@
+@import '../../Styles/Mixins/mixins';
+
 .cart:hover > .cart__container {
   display: block;
 }
 
 .cart {
   position: relative;
-  margin: 0 3em;
+  margin-right: 1.2em;
 
   .cart__icon {
     position: relative;

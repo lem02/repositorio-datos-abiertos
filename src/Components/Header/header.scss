@@ -1,25 +1,48 @@
+@import '../../Styles/Mixins/mixins';
+
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
-  height: 4em;
   box-shadow: 0 0 5px 2px var(--gray-light);
 
-  .header__logo {
+  .header__content {
+    position: relative;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    width: 8.4em;
-    height: 100%;
-    margin: 0 2em;
+    height: 4em;
 
-    img {
+    .header__content__logo {
+      display: flex;
+      align-items: center;
+      width: 8.4em;
       height: 100%;
-      width: auto;
-      transition: all ease-in-out 0.1s;
+      margin-left: 2em;
 
-      &:hover {
-        height: 104%;
+      img {
+        height: 100%;
+        width: auto;
+        transition: all ease-in-out 0.1s;
+
+        &:hover {
+          height: 104%;
+        }
+      }
+    }
+
+    .header__content__options {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: calc(100% - 10.4em);
+      padding-right: 1em;
+
+      &::before {
+        content: '';
+      }
+
+      @include from-tablet {
+        justify-content: space-between;
+        padding-right: 2em;
       }
     }
   }

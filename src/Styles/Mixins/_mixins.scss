@@ -1,0 +1,13 @@
+/// @access public
+@mixin from-tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+/// @access public
+@mixin from-desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
