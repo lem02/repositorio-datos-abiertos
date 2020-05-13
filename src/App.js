@@ -8,7 +8,7 @@ import Footer from './Components/Footer/footer';
 
 function App() {
   return (
-    <>
+    <section className="max-page-height scroll-styles">
       <Header />
       <Switch>
         <Route path="/" exact component={Home} />
@@ -17,7 +17,7 @@ function App() {
         <Redirect to={'/'} />
       </Switch>
       <Footer />
-    </>
+    </section>
   );
 }
 

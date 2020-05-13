@@ -13,11 +13,12 @@ const Repository = ({
     params: { search },
   },
 }) => {
-  const { order, addItem } = useContext(SiteContext);
+  const { order, addItem, breakpoint } = useContext(SiteContext);
   const [dataResult, setDataResult] = useState();
   const [repoSelected, setRepoSelected] = useState();
   const [content, setContent] = useState('description');
   const [message, setMessage] = useState();
+  const [showInfo, setShowInfo] = useState();
 
   useEffect(() => {
     if (search && search !== '') {
@@ -25,6 +26,7 @@ const Repository = ({
         if (res.length > 0) {
           setDataResult(res);
           setRepoSelected(res[0]);
+          setShowInfo(false);
         }
       });
     }
@@ -40,16 +42,37 @@ const Repository = ({
 
   return (
     <section className="repository">
-      {dataResult ? (
+      {dataResult && dataResult.length > 0 ? (
         <>
-          <section className="repository__search-result scroll-styles">
+          <section
+            className={`repository__search-result ${
+              !breakpoint.large && showInfo ? 'hide' : ''
+            }`}
+          >
+            <p className="repository__search-result__title">
+              Resultados de la busqueda
+            </p>
             <SearchResult
               data={dataResult}
               repoSelected={repoSelected}
               setRepoSelected={setRepoSelected}
+              setShowInfo={setShowInfo}
             />
           </section>
-          <section className="repository__selected scroll-styles">
+          <section
+            className={`repository__selected ${
+              !breakpoint.large && !showInfo ? 'hide' : ''
+            }`}
+          >
+            <div
+              className="repository__selected__back-button"
+              onClick={() => {
+                setShowInfo(false);
+              }}
+            >
+              <i className="fa fa-chevron-left" />
+              <span>Volver a los resultados</span>
+            </div>
             {repoSelected && (
               <header className="repository__selected__header">
                 <h2 className="repository__selected__title">

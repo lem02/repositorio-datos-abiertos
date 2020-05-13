@@ -32,7 +32,7 @@ const Cart = () => {
           )}
         </div>
         <div className="cart__total">
-          <Link to="/form">Solicitar </Link>
+          <Link to="/form">Solicitar</Link>
         </div>
       </div>
     </div>

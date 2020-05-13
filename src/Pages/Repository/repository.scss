@@ -1,25 +1,53 @@
+@import '../../Styles/Mixins/mixins';
+
 .repository {
   position: relative;
-  display: flex;
+
+  @include from-desktop {
+    display: flex;
+  }
 
   .repository__search-result {
-    width: 20%;
-    height: calc(100vh - 6em);
-    margin: 1em;
-    margin-right: 0.5em;
+    margin: 1em 0.6em;
     border-radius: 5px;
     box-shadow: 0 0 5px 2px var(--gray-light);
+
+    @include from-desktop {
+      width: 25%;
+    }
+
+    .repository__search-result__title {
+      padding: 1em 0;
+      font-size: 1.4em;
+      text-align: center;
+      font-weight: bold;
+      color: var(--primary-light);
+    }
   }
 
   .repository__selected {
-    position: relative;
-    width: 80%;
-    height: calc(100vh - 6em);
-    margin: 1em;
-    margin-left: 0.5em;
+    margin: 1em 0.6em;
     padding: 1.5em;
     border-radius: 5px;
     box-shadow: 0 0 5px 2px var(--gray-light);
+
+    @include from-desktop {
+      width: 75%;
+    }
+
+    .repository__selected__back-button {
+      margin-bottom: 1em;
+      color: var(--primary-light);
+      font-weight: bold;
+
+      @include from-desktop {
+        display: none;
+      }
+
+      i {
+        margin-right: 0.5em;
+      }
+    }
 
     .repository__selected__header {
       margin-bottom: 2em;
@@ -39,13 +67,24 @@
     }
 
     .repository__selected__content-selector {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
       margin: 1em 0;
       padding: 0.5em 0;
       border-top: 1px solid var(--gray-light);
       border-bottom: 1px solid var(--gray-light);
 
+      @include from-tablet {
+        justify-content: flex-start;
+      }
+
       button {
-        margin-right: 1em;
+        margin: 0.5em 0;
+
+        @include from-tablet {
+          margin-right: 0.5em;
+        }
       }
     }
   }
