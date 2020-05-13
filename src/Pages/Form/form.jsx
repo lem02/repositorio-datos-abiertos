@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { SiteContext } from '../../Context/siteContext';
+import Request from '../../Requests/apiRequests';
 import './form.scss';
 
 const Form = () => {
+  const { order } = useContext(SiteContext);
   const [vinculoUdea, setVinculoUdea] = useState();
   const [uso, setUso] = useState();
   const [conocidoPor, setConocidoPor] = useState();
@@ -12,7 +15,14 @@ const Form = () => {
   });
 
   const onSubmit = (values) => {
-    console.log(values);
+    console.log({ ...values, rep: order.map((item) => item.id) });
+    Request.post(
+      '/send-mail/',
+      { ...values, rep: order.map((item) => item.id) },
+      (res) => {
+        console.log(res);
+      }
+    );
     setSent(true);
   };
 
