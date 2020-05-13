@@ -1,10 +1,12 @@
+@import '../../Styles/Mixins/mixins';
+
 .cart:hover > .cart__container {
   display: block;
 }
 
 .cart {
   position: relative;
-  margin: 0 3em;
+  margin-right: 1.2em;
 
   .cart__icon {
     position: relative;
@@ -49,6 +51,13 @@
 
   .cart__items {
     height: 15em;
+
+    .cart__items__empty {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
     .cart__item {
       display: flex;
@@ -101,8 +110,8 @@
       text-decoration: none;
 
       &:hover {
-        box-shadow: 0 0 3px 0 var(--primary-alt);
-        background-color: var(--primary-alt);
+        box-shadow: 0 0 3px 0 var(--primary-light);
+        background-color: var(--primary-light);
       }
     }
   }

@@ -13,7 +13,7 @@ export const options = {
 const Request = {
   get: (path, callback) => {
     axios
-      .get(`${MAIN_URL}${path}`, options)
+      .get(MAIN_URL + path, options)
       .then((res) => {
         callback(res.data);
       })
@@ -21,7 +21,7 @@ const Request = {
   },
   post: (path, data, callback) => {
     axios
-      .post(`${MAIN_URL}/${path}`, options, data)
+      .post(MAIN_URL + path, data, options)
       .then((res) => {
         callback(res.data);
       })

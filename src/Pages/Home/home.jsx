@@ -1,26 +1,8 @@
-import React, { useContext } from 'react';
-import SearchResult from '../../Components/SearchResult/searchResult';
-import Repository from '../../Components/Repository/repository';
-import { SiteContext } from '../../Context/siteContext';
+import React from 'react';
 import './home.scss';
 
 const Home = () => {
-  const { dataResult, repoSelected, setRepoSelected } = useContext(SiteContext);
-
-  return (
-    <section className="home">
-      <section className="home__search-result scroll-styles">
-        <SearchResult
-          data={dataResult}
-          repoSelected={repoSelected}
-          setRepoSelected={setRepoSelected}
-        />
-      </section>
-      <section className="home__repository-selected scroll-styles">
-        <Repository repoSelected={repoSelected} />
-      </section>
-    </section>
-  );
+  return <section className="home">Home page</section>;
 };
 
 export default Home;

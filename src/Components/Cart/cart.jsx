@@ -16,17 +16,23 @@ const Cart = () => {
       </div>
       <div className="cart__container">
         <div className="cart__items scroll-styles">
-          {order.map((item, index) => (
-            <article key={index} className="cart__item">
-              <p>{item.titulo}</p>
-              <button onClick={() => deleteItem(item)}>
-                <i className="fa fa-trash" />
-              </button>
-            </article>
-          ))}
+          {order.length > 0 ? (
+            <>
+              {order.map((item, index) => (
+                <article key={index} className="cart__item">
+                  <p>{item.titulo}</p>
+                  <button onClick={() => deleteItem(item)}>
+                    <i className="fa fa-trash" />
+                  </button>
+                </article>
+              ))}
+            </>
+          ) : (
+            <p className="cart__items__empty">El carrito de datos está vacío</p>
+          )}
         </div>
         <div className="cart__total">
-          <Link to="/form">Solicitar </Link>
+          <Link to="/form">Solicitar</Link>
         </div>
       </div>
     </div>

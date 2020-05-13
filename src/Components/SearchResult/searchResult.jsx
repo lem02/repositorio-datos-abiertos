@@ -1,7 +1,7 @@
 import React from 'react';
 import './searchResult.scss';
 
-const SearchResult = ({ data, repoSelected, setRepoSelected }) => {
+const SearchResult = ({ data, repoSelected, setRepoSelected, setShowInfo }) => {
   return (
     <div className="search-result">
       {data &&
@@ -13,6 +13,7 @@ const SearchResult = ({ data, repoSelected, setRepoSelected }) => {
             }`}
             onClick={() => {
               setRepoSelected(repo);
+              setShowInfo(true);
             }}
           >
             <div className="search-result__item__content">

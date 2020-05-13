@@ -1,35 +1,50 @@
-import React, { useState, useContext } from 'react';
-import { SiteContext } from '../../Context/siteContext';
-import Request from '../../Requests/apiRequests';
+import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import './searchBar.scss';
 
-const SearchBar = () => {
-  const { setDataResult } = useContext(SiteContext);
+const SearchBar = ({ history }) => {
   const [search, setSearch] = useState();
+  const [showForm, setShowForm] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    Request.get(`/findbykey/${search}`, (res) => {
-      if (res.length < 1) {
-        window.alert(`No se encontraron resultados para: ${search}`);
-      } else {
-        setDataResult(res);
-      }
-    });
+
+    if (search && search !== '') {
+      setShowForm(!showForm);
+      history.push(`/repository/${search}`);
+    }
   };
 
   return (
-    <form className="search-bar" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        onChange={(e) => {
-          setSearch(e.target.value);
+    <div className="search-bar">
+      <button
+        type="submit"
+        className="search-bar__icon"
+        onClick={() => {
+          setShowForm(!showForm);
         }}
-      />
-      <button type="submit" className="search-bar__button">
-        <i className="fa fa-search" />
+      >
+        <i className={showForm ? 'fa fa-times' : 'fa fa-search'} />
       </button>
-    </form>
+
+      <form
+        className={`search-bar__form ${
+          showForm ? 'search-bar__form--show' : ''
+        }`}
+        onSubmit={handleSubmit}
+      >
+        <input
+          type="text"
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
+        />
+        <button type="submit" className="search-bar__form__button">
+          <i className="fa fa-search" />
+        </button>
+      </form>
+    </div>
   );
 };
-export default SearchBar;
+
+export default withRouter(SearchBar);

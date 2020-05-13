@@ -1,41 +1,86 @@
+@import '../../Styles/Mixins/mixins';
+
 .search-bar {
-  width: 40em;
-  display: flex;
-  align-items: center;
-  height: 2.5em;
-  padding: 0 1em;
-  padding-right: 0.8em;
-  border-radius: 8px;
-  background-color: var(--white-alt);
-
-  input {
-    width: 100%;
-    outline: none;
-    margin-right: 0.5em;
+  .search-bar__icon {
     font-size: 1em;
-    border: 0;
-    background-color: inherit;
-  }
-
-  .search-bar__button {
-    font-size: 16px;
-    color: inherit;
-    background-color: inherit;
+    margin-right: 1em;
     padding: 0;
+    color: var(--primary);
+    background-color: inherit;
 
     i {
-      color: var(--primary);
-      font-size: 1.5em;
-      cursor: pointer;
-      transition: all ease-in-out 0.1s;
-
-      &:hover {
-        font-size: 1.6em;
-      }
+      font-size: 1.7em;
     }
 
     &:hover {
       box-shadow: none;
+    }
+
+    @include from-tablet {
+      display: none;
+    }
+  }
+
+  .search-bar__form {
+    position: absolute;
+    top: 4em;
+    right: 0;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 3em;
+    padding: 0 1em;
+    padding-right: 0.8em;
+    box-shadow: 0 0 5px 0 var(--gray);
+    background-color: var(--white);
+    transform: scaleX(0);
+    transition: all ease-in-out 0.3s;
+
+    @include from-tablet {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 30em;
+      height: 2.5em;
+      transform: scale(1);
+      border-radius: 8px;
+      box-shadow: none;
+      background-color: var(--white-alt);
+    }
+
+    input {
+      width: 100%;
+      margin-right: 0.5em;
+      font-size: 1em;
+      border: 0;
+      background-color: inherit;
+    }
+
+    .search-bar__form__button {
+      font-size: 16px;
+      color: inherit;
+      background-color: inherit;
+      padding: 0;
+
+      i {
+        color: var(--primary);
+        font-size: 1.5em;
+        cursor: pointer;
+        transition: all ease-in-out 0.1s;
+
+        &:hover {
+          font-size: 1.6em;
+        }
+      }
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+
+    &--show {
+      transform: scaleX(1);
     }
   }
 }

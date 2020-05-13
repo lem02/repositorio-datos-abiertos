@@ -4,8 +4,6 @@ import { useEffect, useReducer } from 'react';
 export const SiteContext = createContext(null);
 
 const SiteContextContainer = ({ children }) => {
-  const [dataResult, setDataResult] = useState();
-  const [repoSelected, setRepoSelected] = useState();
   const stateReducer = (prevItems, data) => {
     switch (data.action) {
       case 'loadData':
@@ -32,6 +30,7 @@ const SiteContextContainer = ({ children }) => {
   };
   const initialState = [];
   const [order, setOrder] = useReducer(stateReducer, initialState);
+  const [breakpoint, setBreakpoint] = useState({});
 
   const addItem = (item) => {
     setOrder({ action: 'add', item });
@@ -48,23 +47,40 @@ const SiteContextContainer = ({ children }) => {
         items: JSON.parse(localStorage.getItem('order')),
       });
     }
+
+    const mediaSmall = window.matchMedia('(max-width: 767px)');
+    const mediaMedium = window.matchMedia(
+      '(min-width: 768px) and (max-width: 1023px)'
+    );
+    const mediaLarge = window.matchMedia('(min-width: 1024px)');
+
+    const checkMedia = () => {
+      setBreakpoint({
+        small: mediaSmall.matches,
+        medium: mediaMedium.matches,
+        large: mediaLarge.matches,
+      });
+    };
+
+    checkMedia();
+
+    mediaSmall.addListener(checkMedia);
+    mediaMedium.addListener(checkMedia);
+    mediaLarge.addListener(checkMedia);
+
+    return () => {
+      mediaSmall.removeListener(checkMedia);
+      mediaMedium.removeListener(checkMedia);
+      mediaLarge.removeListener(checkMedia);
+    };
   }, []);
 
-  useEffect(() => {
-    if (dataResult && dataResult.length > 0) {
-      setRepoSelected(dataResult[0]);
-    }
-  }, [dataResult]);
-
   const store = {
-    dataResult,
-    setDataResult,
-    repoSelected,
-    setRepoSelected,
     order,
     setOrder,
     addItem,
     deleteItem,
+    breakpoint,
   };
 
   return <SiteContext.Provider value={store}>{children}</SiteContext.Provider>;
