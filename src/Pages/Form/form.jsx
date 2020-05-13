@@ -340,7 +340,7 @@ const Form = () => {
             <div className="form-page__radio-item__option">
               <input
                 type="radio"
-                name="conocio_por"
+                name="conocido_por"
                 id="tableros"
                 value="Desde los tableros en Data UdeA"
                 ref={register({
@@ -352,7 +352,7 @@ const Form = () => {
             <div className="form-page__radio-item__option">
               <input
                 type="radio"
-                name="conocio_por"
+                name="conocido_por"
                 id="meContaron"
                 value="Alguien me contósobre el repositorio"
                 ref={register({
@@ -366,7 +366,7 @@ const Form = () => {
             <div className="form-page__radio-item__option">
               <input
                 type="radio"
-                name="conocio_por"
+                name="conocido_por"
                 id="redesSociales"
                 value="Redes sociales"
                 ref={register({
@@ -378,7 +378,7 @@ const Form = () => {
             <div className="form-page__radio-item__option">
               <input
                 type="radio"
-                name="conocio_por"
+                name="conocido_por"
                 id="google"
                 value="Búsqueda desde Google"
                 ref={register({
@@ -390,7 +390,7 @@ const Form = () => {
             <div className="form-page__radio-item__option">
               <input
                 type="radio"
-                name="conocio_por"
+                name="conocido_por"
                 id="conocidoOther"
                 value={conocidoPor}
                 ref={register({
@@ -404,8 +404,8 @@ const Form = () => {
                 onChange={(e) => setConocidoPor(e.target.value)}
               />
             </div>
-            {errors.conocio_por && (
-              <span className="warning">{errors.conocio_por.message}</span>
+            {errors.conocido_por && (
+              <span className="warning">{errors.conocido_por.message}</span>
             )}
           </div>
           <button type="submit" className="form-page__button">
