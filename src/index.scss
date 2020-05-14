@@ -36,6 +36,10 @@ h6 {
   color: var(--primary);
 }
 
+p {
+  line-height: 1.4em;
+}
+
 input {
   font-size: 1em;
   color: var(--black);
@@ -56,6 +60,33 @@ button {
   }
 }
 
+a {
+  text-decoration: none;
+  color: var(--primary-light);
+
+  &:hover {
+    text-decoration: underline;
+    color: var(--primary);
+  }
+}
+
+li {
+  position: relative;
+  margin-left: 0.6em;
+  list-style-type: none;
+
+  &::before {
+    position: absolute;
+    top: 6px;
+    left: -0.6em;
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--primary-light);
+  }
+}
+
 .max-page-width {
   max-width: 1440px;
   margin: auto;
@@ -70,6 +101,7 @@ button {
 
   &::-webkit-scrollbar {
     width: 5px;
+    height: 5px;
     border-radius: 10px;
   }
 
