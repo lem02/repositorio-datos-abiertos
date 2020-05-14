@@ -40,7 +40,7 @@ const Repository = ({
   }, [order, repoSelected]);
 
   return (
-    <section className="repository max-page-width">
+    <section className="repository max-page-width min-page-height">
       {dataResult && dataResult.length > 0 ? (
         <>
           <section

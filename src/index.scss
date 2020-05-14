@@ -96,6 +96,10 @@ li {
   max-height: 100vh;
 }
 
+.min-page-height {
+  min-height: calc(100vh - 9em);
+}
+
 .scroll-styles {
   overflow: auto;
 
