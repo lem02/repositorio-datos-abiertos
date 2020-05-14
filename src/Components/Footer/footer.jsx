@@ -4,9 +4,10 @@ import './footer.scss';
 const Footer = () => {
   return (
     <footer className="footer">
-      <p>Data UdeA</p>
-      <p>Email: dasda@asdasd.com</p>
-      <p>Telefono: 123123123</p>
+      <p>Powered by Data UdeA</p>
+      <p>
+        <a href="mailto:data@udea.edu.co">data@udea.edu.co</a>
+      </p>
     </footer>
   );
 };
