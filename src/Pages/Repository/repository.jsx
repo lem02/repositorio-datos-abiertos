@@ -22,10 +22,10 @@ const Repository = ({
   useEffect(() => {
     if (search && search !== '') {
       Request.get(`/findbykey/${search}`, (res) => {
+        setDataResult(res);
+        setShowInfo(false);
         if (res.length > 0) {
-          setDataResult(res);
           setRepoSelected(res[0]);
-          setShowInfo(false);
         }
       });
     }
@@ -116,7 +116,9 @@ const Repository = ({
           </section>
         </>
       ) : (
-        <section>La busqueda no arrojo resultado</section>
+        <section className="repository__empty-result">
+          <p>La busqueda no arrojo resultados</p>
+        </section>
       )}
     </section>
   );
