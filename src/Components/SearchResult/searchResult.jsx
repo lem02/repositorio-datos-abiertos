@@ -2,8 +2,6 @@ import React from 'react';
 import './searchResult.scss';
 
 const SearchResult = ({ data, repoSelected, setRepoSelected, setShowInfo }) => {
-  console.log(repoSelected);
-
   return (
     <div className="search-result">
       {data &&

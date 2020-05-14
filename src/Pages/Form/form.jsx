@@ -15,7 +15,6 @@ const Form = () => {
   });
 
   const onSubmit = (values) => {
-    console.log({ ...values, rep: order.map((item) => item.id) });
     Request.post(
       '/send-mail/',
       { ...values, rep: order.map((item) => item.id) },

@@ -42,7 +42,7 @@ const RepoDescription = ({ repoSelected }) => {
             <h3>Tableros relacionados publicados en Data UdeA</h3>
             <ul>
               {repoSelected.rep_relacionados.map((tablero, index) => (
-                <li>
+                <li key={index}>
                   <a
                     href={tablero.url}
                     target="_blank"
