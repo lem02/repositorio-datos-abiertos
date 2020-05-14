@@ -38,6 +38,22 @@ const RepoDescription = ({ repoSelected }) => {
             <h3>Formatos disponibles para la descarga</h3>
             <p>{repoSelected.formatos_disp}</p>
           </div>
+          <div className="repo-description__section">
+            <h3>Tableros relacionados publicados en Data UdeA</h3>
+            <ul>
+              {repoSelected.rep_relacionados.map((tablero, index) => (
+                <li>
+                  <a
+                    href={tablero.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {tablero.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </>
       )}
     </div>
