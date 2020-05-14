@@ -4,13 +4,13 @@ import './searchBar.scss';
 
 const SearchBar = ({ history }) => {
   const [search, setSearch] = useState();
-  const [showForm, setShowForm] = useState();
+  const [showBar, setShowBar] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (search && search !== '') {
-      setShowForm(!showForm);
+      setShowBar(false);
       history.push(`/repository/${search}`);
     }
   };
@@ -21,15 +21,15 @@ const SearchBar = ({ history }) => {
         type="submit"
         className="search-bar__icon"
         onClick={() => {
-          setShowForm(!showForm);
+          setShowBar(!showBar);
         }}
       >
-        <i className={showForm ? 'fa fa-times' : 'fa fa-search'} />
+        <i className={showBar ? 'fa fa-times' : 'fa fa-search'} />
       </button>
 
       <form
         className={`search-bar__form ${
-          showForm ? 'search-bar__form--show' : ''
+          showBar ? 'search-bar__form--show' : ''
         }`}
         onSubmit={handleSubmit}
       >

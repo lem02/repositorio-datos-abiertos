@@ -2,6 +2,8 @@ import React from 'react';
 import './searchResult.scss';
 
 const SearchResult = ({ data, repoSelected, setRepoSelected, setShowInfo }) => {
+  console.log(repoSelected);
+
   return (
     <div className="search-result">
       {data &&
@@ -17,7 +19,7 @@ const SearchResult = ({ data, repoSelected, setRepoSelected, setShowInfo }) => {
             }}
           >
             <div className="search-result__item__content">
-              <h3>{repo.titulo}</h3>
+              <h3>{repo.titulo_corto}</h3>
               <p>{`Última actualización: ${repo.ult_actualizacion}`}</p>
             </div>
           </article>

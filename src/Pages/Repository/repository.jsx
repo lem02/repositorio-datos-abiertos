@@ -3,7 +3,6 @@ import SearchResult from '../../Components/SearchResult/searchResult';
 import RepoDescription from '../../Components/RepoDescription/repoDescription';
 import RepoData from '../../Components/RepoData/repoData';
 import RepoDictionary from '../../Components/RepoDictionary/repoDictionary';
-import RepoAssociated from '../../Components/RepoAssociated/repoAssociated';
 import { SiteContext } from '../../Context/siteContext';
 import Request from '../../Requests/apiRequests';
 import './repository.scss';
@@ -49,9 +48,9 @@ const Repository = ({
               !breakpoint.large && showInfo ? 'hide' : ''
             }`}
           >
-            <p className="repository__search-result__title">
+            <h2 className="repository__search-result__title">
               Resultados de la busqueda
-            </p>
+            </h2>
             <SearchResult
               data={dataResult}
               repoSelected={repoSelected}
@@ -106,21 +105,13 @@ const Repository = ({
               >
                 Diccionario
               </button>
-              <button
-                onClick={() => {
-                  setContent('associated');
-                }}
-              >
-                Tableros relacionados
-              </button>
             </div>
             <div className="repository__selected__content">
               {content === 'description' && (
                 <RepoDescription repoSelected={repoSelected} />
               )}
-              {content === 'data' && <RepoData />}
+              {content === 'data' && <RepoData repoSelected={repoSelected} />}
               {content === 'dictionary' && <RepoDictionary />}
-              {content === 'associated' && <RepoAssociated />}
             </div>
           </section>
         </>
