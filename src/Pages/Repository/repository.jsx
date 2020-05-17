@@ -111,7 +111,9 @@ const Repository = ({
                 <RepoDescription repoSelected={repoSelected} />
               )}
               {content === 'data' && <RepoData repoSelected={repoSelected} />}
-              {content === 'dictionary' && <RepoDictionary />}
+              {content === 'dictionary' && (
+                <RepoDictionary repoSelected={repoSelected} />
+              )}
             </div>
           </section>
         </>
