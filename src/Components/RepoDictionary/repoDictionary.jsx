@@ -1,22 +1,13 @@
-import React, { useEffect } from 'react';
-import { Document } from 'react-pdf/dist/entry.webpack';
+import React from 'react';
 import './repoDictionary.scss';
 
 const RepoDictionary = ({ repoSelected }) => {
-  const onDocumentLoadSuccess = (e) => {
-    console.log(e);
-  };
-
-  useEffect(() => {
-    console.log(repoSelected.path_diccionario);
-  }, [repoSelected]);
-
   return (
-    <div>
-      <Document
-        file={repoSelected.path_diccionario}
-        onLoadSuccess={onDocumentLoadSuccess}
-      />
+    <div className="repo-dictionary">
+      <iframe
+        src={`${process.env.REACT_APP_API_URL}/dict/${repoSelected.id}`}
+        title="dictionaryContainer"
+      ></iframe>
     </div>
   );
 };
