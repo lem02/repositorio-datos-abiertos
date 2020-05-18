@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const MAIN_URL = 'http://localhost:3000';
-
 export const options = {
   headers: {
     'Content-Type': 'application/json',
@@ -13,7 +11,7 @@ export const options = {
 const Request = {
   get: (path, callback) => {
     axios
-      .get(MAIN_URL + path, options)
+      .get(process.env.REACT_APP_API_URL + path, options)
       .then((res) => {
         callback(res.data);
       })
@@ -21,7 +19,7 @@ const Request = {
   },
   post: (path, data, callback) => {
     axios
-      .post(MAIN_URL + path, data, options)
+      .post(process.env.REACT_APP_API_URL + path, data, options)
       .then((res) => {
         callback(res.data);
       })
