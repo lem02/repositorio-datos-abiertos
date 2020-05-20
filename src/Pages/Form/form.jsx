@@ -5,7 +5,7 @@ import Request from '../../Requests/apiRequests';
 import './form.scss';
 
 const Form = () => {
-  const { order } = useContext(SiteContext);
+  const { order, cleanOrder } = useContext(SiteContext);
   const [vinculoUdea, setVinculoUdea] = useState();
   const [uso, setUso] = useState();
   const [conocidoPor, setConocidoPor] = useState();
@@ -19,10 +19,10 @@ const Form = () => {
       '/send-mail/',
       { ...values, rep: order.map((item) => item.id) },
       (res) => {
-        console.log(res);
+        cleanOrder();
+        setSent(true);
       }
     );
-    setSent(true);
   };
 
   return (
@@ -37,7 +37,7 @@ const Form = () => {
             adicional.
           </p>
           <p>
-            La información suministrada solo será usada para llevar un registro
+            La información suministrada sólo será usada para llevar un registro
             del uso de estos repositorios.
           </p>
           <p>Agradecemos tu apoyo a nuestra iniciativa.</p>
@@ -54,7 +54,7 @@ const Form = () => {
               errors.email ? 'form-page__text-item--error' : ''
             }`}
           >
-            <label htmlFor="email">Correo electronico</label>
+            <label htmlFor="email">Correo electrónico</label>
             <input
               type="text"
               name="email"
@@ -73,7 +73,7 @@ const Form = () => {
           </div>
           <div className="form-page__radio-item">
             <label className="form-page__radio-item__title">
-              Vinculo que tiene con la Universidad de Antioquia
+              Vínculo que tiene con la Universidad de Antioquia
             </label>
             <div className="form-page__radio-item__option">
               <input
@@ -353,13 +353,13 @@ const Form = () => {
                 type="radio"
                 name="conocido_por"
                 id="meContaron"
-                value="Alguien me contósobre el repositorio"
+                value="Alguien me contó sobre el repositorio"
                 ref={register({
                   required: 'Este campo es obligatorio',
                 })}
               />
               <label htmlFor="meContaron">
-                Alguien me contósobre el repositorio
+                Alguien me contó sobre el repositorio
               </label>
             </div>
             <div className="form-page__radio-item__option">

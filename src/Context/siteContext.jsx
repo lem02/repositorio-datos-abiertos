@@ -24,6 +24,9 @@ const SiteContextContainer = ({ children }) => {
           JSON.stringify(prevItems.filter((item) => item !== data.item))
         );
         return prevItems.filter((item) => item !== data.item);
+      case 'clean':
+        localStorage.setItem('order', []);
+        return [];
       default:
         break;
     }
@@ -38,6 +41,10 @@ const SiteContextContainer = ({ children }) => {
 
   const deleteItem = (item) => {
     setOrder({ action: 'delete', item });
+  };
+
+  const cleanOrder = () => {
+    setOrder({ action: 'clean' });
   };
 
   useEffect(() => {
@@ -77,9 +84,9 @@ const SiteContextContainer = ({ children }) => {
 
   const store = {
     order,
-    setOrder,
     addItem,
     deleteItem,
+    cleanOrder,
     breakpoint,
   };
 
