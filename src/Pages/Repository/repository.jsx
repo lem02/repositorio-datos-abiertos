@@ -49,7 +49,7 @@ const Repository = ({
             }`}
           >
             <h2 className="repository__search-result__title">
-              Resultados de la busqueda
+              Resultados de la búsqueda
             </h2>
             <SearchResult
               data={dataResult}

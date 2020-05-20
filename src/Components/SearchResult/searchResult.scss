@@ -1,6 +1,34 @@
 .search-result {
   height: 100%;
 
+  .search-result__filterbar {
+    display: flex;
+    flex-wrap: wrap;
+
+    .search-result__filterbar__item {
+      width: calc(50%);
+      padding: 1em;
+      color: var(--primary);
+      border: none;
+      border-bottom: 1px solid var(--gray-light);
+      background-color: inherit;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0 0 5px 0 var(--gray-light);
+      }
+
+      &--stretched {
+        width: 100%;
+        border-top: 1px solid var(--gray-light);
+      }
+
+      &--last {
+        border-left: 1px solid var(--gray-light);
+      }
+    }
+  }
+
   .search-result__item {
     display: flex;
     align-items: center;
