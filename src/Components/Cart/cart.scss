@@ -1,9 +1,5 @@
 @import '../../Styles/Mixins/mixins';
 
-.cart:hover > .cart__container {
-  display: block;
-}
-
 .cart {
   position: relative;
   margin-right: 1.2em;
@@ -47,6 +43,10 @@
     box-shadow: 0 0 5px 2px var(--gray-light);
     border-radius: 3px;
     background-color: var(--white);
+
+    &--hover {
+      display: block;
+    }
   }
 
   .cart__items {

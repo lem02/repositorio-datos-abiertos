@@ -1,20 +1,33 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { SiteContext } from '../../Context/siteContext';
 import './cart.scss';
 
 const Cart = () => {
   const { order, deleteItem } = useContext(SiteContext);
+  const [cartHover, setCartHover] = useState();
 
   return (
-    <div className="cart">
+    <div
+      onMouseOver={() => {
+        setCartHover(true);
+      }}
+      onMouseLeave={() => {
+        setCartHover(false);
+      }}
+      className="cart"
+    >
       <div
         className={`cart__icon ${order.length > 0 ? 'cart__icon--move' : ''}`}
       >
         <i className="fa fa-shopping-cart" />
         <span>{order.length}</span>
       </div>
-      <div className="cart__container">
+      <div
+        className={`cart__container ${
+          cartHover ? 'cart__container--hover' : ''
+        }`}
+      >
         <div className="cart__items scroll-styles">
           {order.length > 0 ? (
             <>
@@ -32,7 +45,14 @@ const Cart = () => {
           )}
         </div>
         <div className="cart__total">
-          <Link to="/form">Solicitar</Link>
+          <Link
+            to="/form"
+            onClick={() => {
+              setCartHover(false);
+            }}
+          >
+            Solicitar
+          </Link>
         </div>
       </div>
     </div>
