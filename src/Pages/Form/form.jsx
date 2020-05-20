@@ -301,7 +301,7 @@ const Form = () => {
           </div>
           <div className="form-page__radio-item">
             <label className="form-page__radio-item__title">
-              ¿Quisieras publicar los resultados de tu análisis en el poral de
+              ¿Quisieras publicar los resultados de tu análisis en el portal de
               la UdeA?
             </label>
             <div className="form-page__radio-item__option">
