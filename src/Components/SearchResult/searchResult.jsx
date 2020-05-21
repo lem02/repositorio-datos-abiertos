@@ -50,8 +50,8 @@ const SearchResult = ({ data, repoSelected, setRepoSelected, setShowInfo }) => {
         >
           <option value="Todos">Fecha de actualización</option>
           <option value="Últimos 3 meses">Últimos 3 meses</option>
-          <option value="Último semestre">Último semestre</option>
-          <option value="Último año">Último año</option>
+          <option value="Último semestre">Últimos 6 meses </option>
+          <option value="Último año">Últimos 12 meses</option>
         </select>
       </div>
       {resultData &&
