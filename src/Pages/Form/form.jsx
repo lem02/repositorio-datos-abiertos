@@ -1,10 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { SiteContext } from '../../Context/siteContext';
 import Request from '../../Requests/apiRequests';
 import './form.scss';
 
-const Form = () => {
+const Form = ({ history }) => {
   const { order, cleanOrder } = useContext(SiteContext);
   const [vinculoUdea, setVinculoUdea] = useState();
   const [uso, setUso] = useState();
@@ -24,6 +25,12 @@ const Form = () => {
       }
     );
   };
+
+  useEffect(() => {
+    if (order && order.length <= 0) {
+      history.push('/');
+    }
+  }, [order]);
 
   return (
     <section className="form-page">
@@ -210,7 +217,7 @@ const Form = () => {
           </div>
           <div className="form-page__radio-item">
             <label className="form-page__radio-item__title">
-              Usaré estos datos para:
+              Usaré estos datos para
             </label>
             <div className="form-page__radio-item__option">
               <input
@@ -314,7 +321,7 @@ const Form = () => {
                   required: 'Este campo es obligatorio',
                 })}
               />
-              <label htmlFor="siPublicar">Si</label>
+              <label htmlFor="siPublicar">Sí</label>
             </div>
             <div className="form-page__radio-item__option">
               <input
@@ -415,4 +422,5 @@ const Form = () => {
     </section>
   );
 };
-export default Form;
+
+export default withRouter(Form);

@@ -114,5 +114,14 @@
         background-color: var(--primary-light);
       }
     }
+
+    &--disable a {
+      background-color: var(--gray);
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: var(--gray);
+      }
+    }
   }
 }

@@ -44,11 +44,17 @@ const Cart = () => {
             <p className="cart__items__empty">El carrito de datos está vacío</p>
           )}
         </div>
-        <div className="cart__total">
+        <div
+          className={`cart__total ${
+            order.length <= 0 ? 'cart__total--disable' : ''
+          }`}
+        >
           <Link
-            to="/form"
+            to={order.length > 0 ? '/form' : '#'}
             onClick={() => {
-              setCartHover(false);
+              if (order > 0) {
+                setCartHover(false);
+              }
             }}
           >
             Solicitar
