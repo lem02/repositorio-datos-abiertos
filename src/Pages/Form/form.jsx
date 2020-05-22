@@ -19,9 +19,13 @@ const Form = ({ history }) => {
     Request.post(
       '/send-mail/',
       { ...values, rep: order.map((item) => item.id) },
-      (res) => {
-        cleanOrder();
-        setSent(true);
+      (err) => {
+        if (err) {
+          console.log('Hubo un error en la solicitud intentelo de nuevo');
+        } else {
+          cleanOrder();
+          setSent(true);
+        }
       }
     );
   };
@@ -30,6 +34,7 @@ const Form = ({ history }) => {
     if (order && order.length <= 0) {
       history.push('/');
     }
+    // eslint-disable-next-line
   }, [order]);
 
   return (

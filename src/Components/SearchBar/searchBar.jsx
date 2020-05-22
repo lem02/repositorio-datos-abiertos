@@ -11,7 +11,7 @@ const SearchBar = ({ history }) => {
 
     if (search && search !== '') {
       setShowBar(false);
-      history.push(`/repository/${search}`);
+      history.push(`/repository/key/${search}`);
     }
   };
 

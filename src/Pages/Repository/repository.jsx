@@ -9,10 +9,11 @@ import './repository.scss';
 
 const Repository = ({
   match: {
-    params: { search },
+    params: { type, value },
   },
 }) => {
   const { order, addItem, breakpoint } = useContext(SiteContext);
+  const [page, setPage] = useState(1);
   const [dataResult, setDataResult] = useState();
   const [repoSelected, setRepoSelected] = useState();
   const [content, setContent] = useState('description');
@@ -20,16 +21,16 @@ const Repository = ({
   const [showInfo, setShowInfo] = useState();
 
   useEffect(() => {
-    if (search && search !== '') {
-      Request.get(`/findbykey/${search}`, (res) => {
-        setDataResult(res);
+    if (type && type !== '') {
+      Request.get(`/reps/${type}/${value}/${page}`, (res) => {
         setShowInfo(false);
+        setDataResult(res);
         if (res.length > 0) {
           setRepoSelected(res[0]);
         }
       });
     }
-  }, [search]);
+  }, [type, value, page]);
 
   useEffect(() => {
     if (repoSelected && order.find((item) => item.id === repoSelected.id)) {
