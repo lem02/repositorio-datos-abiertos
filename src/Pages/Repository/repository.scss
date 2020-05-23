@@ -2,12 +2,10 @@
 
 .repository {
   position: relative;
-
-  @include from-desktop {
-    display: flex;
-  }
+  display: flex;
 
   .repository__search-result {
+    width: 100%;
     margin: 1em 0.6em;
     border-radius: 5px;
     box-shadow: 0 0 5px 2px var(--gray-light);
@@ -17,7 +15,7 @@
     }
 
     .repository__search-result__title {
-      padding: 1em 0;
+      padding: 1em 0.5em;
       font-size: 1.2em;
       text-align: center;
       font-weight: bold;
@@ -86,18 +84,6 @@
           margin-right: 0.5em;
         }
       }
-    }
-  }
-
-  .repository__empty-result {
-    width: 100%;
-    padding: 0 2em;
-    padding-top: 30vh;
-
-    p {
-      font-size: 1.5em;
-      text-align: center;
-      font-weight: bold;
     }
   }
 }
