@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Request from '../../Requests/apiRequests';
 import './repoData.scss';
 
 const RepoData = ({ repoSelected }) => {
-  return (
-    repoSelected && (
-      <div
-        className="repo-data scroll-styles"
-        dangerouslySetInnerHTML={{ __html: repoSelected.prev_data }}
-      />
-    )
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    setData(null);
+    Request.get(`/prev/${repoSelected.id}`, (res) => {
+      if (res) {
+        setData(res);
+      } else {
+      }
+    });
+  }, [repoSelected]);
+
+  return data ? (
+    <div
+      className="repo-data scroll-styles"
+      dangerouslySetInnerHTML={{ __html: data }}
+    />
+  ) : (
+    <div>
+      <p>Previsualización no disponible</p>
+    </div>
   );
 };
 

@@ -5,13 +5,13 @@
   display: flex;
 
   .repository__search-result {
-    width: 100%;
+    width: calc(100% - 1.2em);
     margin: 1em 0.6em;
     border-radius: 5px;
     box-shadow: 0 0 5px 2px var(--gray-light);
 
     @include from-desktop {
-      width: 25%;
+      width: calc(25% - 1.2em);
     }
 
     .repository__search-result__title {
@@ -24,13 +24,14 @@
   }
 
   .repository__selected {
+    width: calc(100% - 1.2em);
     margin: 1em 0.6em;
     padding: 1.5em;
     border-radius: 5px;
     box-shadow: 0 0 5px 2px var(--gray-light);
 
     @include from-desktop {
-      width: 75%;
+      width: calc(75% - 1.2em);
     }
 
     .repository__selected__back-button {
