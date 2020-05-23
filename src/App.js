@@ -12,7 +12,7 @@ function App() {
       <Header />
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/repository/:type/:value" exact component={Repository} />
+        <Route path="/:type/:value" exact component={Repository} />
         <Route path="/form" exact component={Form} />
         <Redirect to={'/'} />
       </Switch>
