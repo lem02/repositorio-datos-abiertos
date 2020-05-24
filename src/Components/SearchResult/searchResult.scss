@@ -63,4 +63,36 @@
       font-weight: bold;
     }
   }
+
+  .search-result__pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 10em;
+    margin: 1em auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 5px 0 var(--gray-light);
+
+    button {
+      padding: 0.2rem 0.8rem;
+      font-size: 1.5em;
+      background-color: unset;
+      color: var(--primary-light);
+
+      &:hover {
+        box-shadow: none;
+        background-color: var(--white-alt);
+      }
+    }
+
+    .disabled {
+      color: var(--black);
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: unset;
+      }
+    }
+  }
 }

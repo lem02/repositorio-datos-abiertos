@@ -70,6 +70,29 @@ const SearchResult = ({
           <p>La búsqueda no arrojó resultados</p>
         </div>
       )}
+      {dataResult.totalpages > 1 && (
+        <div className="search-result__pagination">
+          <button
+            onClick={() => {
+              setFilters({ page: filters.page - 1 });
+            }}
+            className={filters.page <= 1 ? 'disabled' : ''}
+            disabled={filters.page <= 1}
+          >
+            <i className="fa fa-angle-left"></i>
+          </button>
+          <span>{`${filters.page} de ${dataResult.totalpages}`}</span>
+          <button
+            onClick={() => {
+              setFilters({ page: filters.page + 1 });
+            }}
+            className={filters.page >= dataResult.totalpages ? 'disabled' : ''}
+            disabled={filters.page >= dataResult.totalpages}
+          >
+            <i className="fa fa-angle-right"></i>
+          </button>
+        </div>
+      )}
     </div>
   );
 };
