@@ -9,7 +9,7 @@ const Home = () => {
   useEffect(() => {
     Request.get('/reps/pop/0/0/0/0/1', (res) => {
       setPopular(() =>
-        res.result.length > 5 ? res.result.slice(0, 5) : res.result
+        res.result.length > 5 ? res.result.slice(0, 6) : res.result
       );
     });
   }, []);
