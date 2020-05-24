@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useReducer } from 'react';
 import SearchResult from '../../Components/SearchResult/searchResult';
 import RepoDescription from '../../Components/RepoDescription/repoDescription';
 import RepoData from '../../Components/RepoData/repoData';
@@ -9,27 +9,54 @@ import './repository.scss';
 
 const Repository = ({
   match: {
-    params: { search },
+    params: { type, value },
   },
 }) => {
   const { order, addItem, breakpoint } = useContext(SiteContext);
-  const [dataResult, setDataResult] = useState();
+  const [initial, setInitial] = useState(true);
+  const [dataResult, setDataResult] = useState([]);
   const [repoSelected, setRepoSelected] = useState();
   const [content, setContent] = useState('description');
   const [message, setMessage] = useState();
   const [showInfo, setShowInfo] = useState();
+  const reducer = (prev, newFilter) => ({ ...prev, ...newFilter });
+  const initialState = { usage: 0, access: 0, update: 0, page: 1 };
+  const [filters, setFilters] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    if (search && search !== '') {
-      Request.get(`/findbykey/${search}`, (res) => {
-        setDataResult(res);
-        setShowInfo(false);
-        if (res.length > 0) {
-          setRepoSelected(res[0]);
-        }
-      });
+    let req = '';
+    if (type && value) {
+      switch (type) {
+        case 'busqueda':
+          req = `${value}/${filters.usage}/${filters.access}/${filters.update}/0`;
+          break;
+
+        case 'categoria':
+          req = `all/${filters.usage}/${filters.access}/${filters.update}/${value}`;
+          break;
+
+        case 'popular':
+          req = `pop/${filters.usage}/${filters.access}/${filters.update}/0`;
+          break;
+
+        default:
+          break;
+      }
     }
-  }, [search]);
+    Request.get(`/reps/${req}/${filters.page}`, (res) => {
+      setShowInfo(false);
+      setDataResult(res);
+      if (initial && res.result.length > 0 && type === 'popular') {
+        setInitial(false);
+        setRepoSelected(res.result.find((repo) => repo.id === parseInt(value)));
+      } else if (res.result.length > 0) {
+        setRepoSelected(res.result[0]);
+      } else {
+        setRepoSelected(null);
+      }
+    });
+    // eslint-disable-next-line
+  }, [type, value, filters]);
 
   useEffect(() => {
     if (repoSelected && order.find((item) => item.id === repoSelected.id)) {
@@ -41,87 +68,83 @@ const Repository = ({
 
   return (
     <section className="repository max-page-width min-page-height">
-      {dataResult && dataResult.length > 0 ? (
-        <>
-          <section
-            className={`repository__search-result ${
-              !breakpoint.large && showInfo ? 'hide' : ''
-            }`}
-          >
-            <h2 className="repository__search-result__title">
-              Resultados de la búsqueda
+      <section
+        className={`repository__search-result ${
+          !breakpoint.large && showInfo ? 'hide' : ''
+        }`}
+      >
+        <h2 className="repository__search-result__title">
+          Resultados de la búsqueda
+        </h2>
+        <SearchResult
+          dataResult={dataResult}
+          repoSelected={repoSelected}
+          setRepoSelected={setRepoSelected}
+          setShowInfo={setShowInfo}
+          filters={filters}
+          setFilters={setFilters}
+        />
+      </section>
+      <section
+        className={`repository__selected ${
+          !breakpoint.large && !showInfo ? 'hide' : ''
+        }`}
+      >
+        <div
+          className="repository__selected__back-button"
+          onClick={() => {
+            setShowInfo(false);
+          }}
+        >
+          <i className="fa fa-chevron-left" />
+          <span>Volver a los resultados</span>
+        </div>
+        {repoSelected && (
+          <header className="repository__selected__header">
+            <h2 className="repository__selected__title">
+              {repoSelected.titulo}
             </h2>
-            <SearchResult
-              data={dataResult}
-              repoSelected={repoSelected}
-              setRepoSelected={setRepoSelected}
-              setShowInfo={setShowInfo}
-            />
-          </section>
-          <section
-            className={`repository__selected ${
-              !breakpoint.large && !showInfo ? 'hide' : ''
-            }`}
+            <button onClick={() => addItem(repoSelected)}>
+              {message}
+              <i className="fa fa-shopping-cart" />
+            </button>
+          </header>
+        )}
+        <div className="repository__selected__content-selector">
+          <button
+            onClick={() => {
+              setContent('description');
+            }}
           >
-            <div
-              className="repository__selected__back-button"
-              onClick={() => {
-                setShowInfo(false);
-              }}
-            >
-              <i className="fa fa-chevron-left" />
-              <span>Volver a los resultados</span>
-            </div>
-            {repoSelected && (
-              <header className="repository__selected__header">
-                <h2 className="repository__selected__title">
-                  {repoSelected.titulo}
-                </h2>
-                <button onClick={() => addItem(repoSelected)}>
-                  {message}
-                  <i className="fa fa-shopping-cart" />
-                </button>
-              </header>
+            Descripción
+          </button>
+          <button
+            onClick={() => {
+              setContent('data');
+            }}
+          >
+            Previsualizar
+          </button>
+          <button
+            onClick={() => {
+              setContent('dictionary');
+            }}
+          >
+            Diccionario
+          </button>
+        </div>
+        {repoSelected && (
+          <div className="repository__selected__content">
+            {content === 'description' && (
+              <RepoDescription repoSelected={repoSelected} />
             )}
-            <div className="repository__selected__content-selector">
-              <button
-                onClick={() => {
-                  setContent('description');
-                }}
-              >
-                Descripción
-              </button>
-              <button
-                onClick={() => {
-                  setContent('data');
-                }}
-              >
-                Previsualizar
-              </button>
-              <button
-                onClick={() => {
-                  setContent('dictionary');
-                }}
-              >
-                Diccionario
-              </button>
-            </div>
-            <div className="repository__selected__content">
-              {content === 'description' && (
-                <RepoDescription repoSelected={repoSelected} />
-              )}
-              {content === 'data' && <RepoData repoSelected={repoSelected} />}
-              {content === 'dictionary' && (
-                <RepoDictionary repoSelected={repoSelected} />
-              )}
-            </div>
-          </section>
-        </>
-      ) : (
-        <section className="repository__empty-result">
-          <p>La busqueda no arrojo resultados</p>
-        </section>
-      )}
+            {content === 'data' && <RepoData repoSelected={repoSelected} />}
+            {content === 'dictionary' && (
+              <RepoDictionary repoSelected={repoSelected} />
+            )}
+          </div>
+        )}
+      </section>
     </section>
   );
 };
