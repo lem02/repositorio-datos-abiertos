@@ -23,7 +23,7 @@ const Home = () => {
         />
       </figure>
       <section className="home__section">
-        <h2 className="home__section__title">Categorías</h2>
+        <h2 className="home__section__title">Principales Categorías</h2>
         <div className="home__section__container">
           <article className="home__section__item">
             <Link to="/categoria/1">
@@ -53,12 +53,13 @@ const Home = () => {
         </div>
       </section>
       <section className="home__section home__paragraph-section">
-        <h2 className="home__section__title">Qué son los datos abiertos</h2>
+        <h2 className="home__section__title">Sobre esta iniciativa</h2>
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae
-          enim quae officiis quisquam nemo quidem est, iusto aspernatur quasi
-          fugit animi culpa quo omnis asperiores saepe, blanditiis mollitia
-          explicabo! Autem.
+          En Data UdeA estamos comprometidos con la creación de comunidad
+          alrededor de los datos. Esta iniciativa de datos abiertos busca
+          disponer de forma abierta y gratuita datos del día a día universitario
+          que impulsen nuevas investigaciones, aplicaciones, visualizaciones e
+          historias que ayuden a entender la UdeA, desde los datos.
         </p>
       </section>
       <section className="home__section">
