@@ -57,7 +57,7 @@ const Home = () => {
         <p>
           En Data UdeA estamos comprometidos con la creación de comunidad
           alrededor de los datos. Esta iniciativa de datos abiertos busca
-          disponer de forma abierta y gratuita datos del día a día universitario
+          disponer de forma abierta y gratuita datos del quehacer universitario
           que impulsen nuevas investigaciones, aplicaciones, visualizaciones e
           historias que ayuden a entender la UdeA, desde los datos.
         </p>
@@ -84,8 +84,8 @@ const Home = () => {
           universitaria y al trabajo diario del personal de la División de
           Gestión Informática y de la División de Planes y Proyectos de la UdeA.
           Damos un especial agradecimiento al programa de Ingeniería de Sistemas
-          y a los estudiantes Luis y Jose cuya dedicación hizo realidad este
-          portal.
+          y a los estudiantes Luis Ernesto Monsalve y Jose Fernando Gómez cuya
+          dedicación hizo realidad este portal.
         </p>
       </section>
     </section>
