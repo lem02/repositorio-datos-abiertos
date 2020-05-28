@@ -77,6 +77,17 @@ const Home = () => {
             ))}
         </div>
       </section>
+      <section className="home__section home__paragraph-section">
+        <h2 className="home__section__title">Agradecimientos</h2>
+        <p>
+          Este conjunto de recursos es posible gracias a nuestra comunidad
+          universitaria y al trabajo diario del personal de la División de
+          Gestión Informática y de la División de Planes y Proyectos de la UdeA.
+          Damos un especial agradecimiento al programa de Ingeniería de Sistemas
+          y a los estudiantes Luis y Jose cuya dedicación hizo realidad este
+          portal.
+        </p>
+      </section>
     </section>
   );
 };
