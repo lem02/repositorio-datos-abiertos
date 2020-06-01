@@ -7,10 +7,9 @@ const RepoData = ({ repoSelected }) => {
 
   useEffect(() => {
     setData(null);
-    Request.get(`/prev/${repoSelected.id}`, (res) => {
-      if (res) {
-        setData(res);
-      } else {
+    Request.get(`/prev/${repoSelected.id}`, ({ data }) => {
+      if (data) {
+        setData(data);
       }
     });
   }, [repoSelected]);

@@ -13,7 +13,11 @@ const Request = {
     axios
       .get(process.env.REACT_APP_API_URL + path, options)
       .then((res) => {
-        callback(res.data);
+        if (res.status === 200 || res.status === 204) {
+          callback({ data: res.data });
+        } else {
+          callback({ error: res.status });
+        }
       })
       .catch(console.log);
   },
@@ -21,7 +25,11 @@ const Request = {
     axios
       .post(process.env.REACT_APP_API_URL + path, data, options)
       .then((res) => {
-        callback(res.data);
+        if (res.status === 200 || res.status === 204) {
+          callback({ data: res.data });
+        } else {
+          callback({ error: res.status });
+        }
       })
       .catch(console.log);
   },

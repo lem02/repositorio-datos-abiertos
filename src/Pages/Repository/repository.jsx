@@ -43,16 +43,20 @@ const Repository = ({
           break;
       }
     }
-    Request.get(`/reps/${req}/${filters.page}`, (res) => {
-      setShowInfo(false);
-      setDataResult(res);
-      if (initial && res.result.length > 0 && type === 'popular') {
-        setInitial(false);
-        setRepoSelected(res.result.find((repo) => repo.id === parseInt(value)));
-      } else if (res.result.length > 0) {
-        setRepoSelected(res.result[0]);
-      } else {
-        setRepoSelected(null);
+    Request.get(`/reps/${req}/${filters.page}`, ({ data }) => {
+      if (data) {
+        setShowInfo(false);
+        setDataResult(data);
+        if (initial && data.result.length > 0 && type === 'popular') {
+          setInitial(false);
+          setRepoSelected(
+            data.result.find((repo) => repo.id === parseInt(value))
+          );
+        } else if (data.result.length > 0) {
+          setRepoSelected(data.result[0]);
+        } else {
+          setRepoSelected(null);
+        }
       }
     });
     // eslint-disable-next-line
