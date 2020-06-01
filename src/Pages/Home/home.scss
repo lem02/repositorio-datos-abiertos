@@ -39,15 +39,33 @@
       margin: auto;
     }
 
-    .home__section__item a {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+    .home__section__item {
+      position: relative;
       width: 17em;
       height: 14em;
       margin: 1em;
-      padding: 1em;
-      background-color: var(--gray-light);
+
+      img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      a {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        width: 100%;
+        height: 100%;
+        padding: 1em;
+        color: var(--white);
+        background-color: rgba(0, 0, 0, 0.5);
+
+        h3 {
+          color: var(--white);
+        }
+      }
     }
   }
 

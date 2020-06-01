@@ -7,10 +7,12 @@ const Home = () => {
   const [popular, setPopular] = useState();
 
   useEffect(() => {
-    Request.get('/reps/pop/0/0/0/0/1', (res) => {
-      setPopular(() =>
-        res.result.length > 5 ? res.result.slice(0, 6) : res.result
-      );
+    Request.get('/reps/pop/0/0/0/0/1', ({ data }) => {
+      if (data) {
+        setPopular(() =>
+          data.result.length > 5 ? data.result.slice(0, 6) : data.result
+        );
+      }
     });
   }, []);
 
@@ -26,26 +28,51 @@ const Home = () => {
         <h2 className="home__section__title">Principales Categorías</h2>
         <div className="home__section__container">
           <article className="home__section__item">
+            <img
+              src="/img/inscripciones"
+              alt=""
+              className="home__section__item__bg-img"
+            />
             <Link to="/categoria/1">
               <h3>Inscripciones</h3>
             </Link>
           </article>
           <article className="home__section__item">
+            <img
+              src="/img/matriculados"
+              alt=""
+              className="home__section__item__bg-img"
+            />
             <Link to="/categoria/2">
               <h3>Matriculados</h3>
             </Link>
           </article>
           <article className="home__section__item">
+            <img
+              src="/img/graduados"
+              alt=""
+              className="home__section__item__bg-img"
+            />
             <Link to="/categoria/3">
               <h3>Graduados</h3>
             </Link>
           </article>
           <article className="home__section__item">
+            <img
+              src="/img/profesores"
+              alt=""
+              className="home__section__item__bg-img"
+            />
             <Link to="/categoria/4">
               <h3>Profesores</h3>
             </Link>
           </article>
           <article className="home__section__item">
+            <img
+              src="/img/empleados"
+              alt=""
+              className="home__section__item__bg-img"
+            />
             <Link to="/categoria/5">
               <h3>Empleados</h3>
             </Link>
@@ -69,6 +96,11 @@ const Home = () => {
             popular.length > 0 &&
             popular.map((repo, index) => (
               <article key={index} className="home__section__item">
+                <img
+                  src={`/img/${repo.id}`}
+                  alt=""
+                  className="home__section__item__bg-img"
+                />
                 <Link to={`/popular/${repo.id}`}>
                   <h3>{repo.titulo_corto}</h3>
                   <p>{repo.ult_actualizacion}</p>
