@@ -129,3 +129,12 @@ li {
 .hide {
   display: none;
 }
+
+.loading {
+  border: 3px solid var(--white);
+  width: 20px;
+  height: 20px;
+  border-color: var(--white) transparent;
+  border-radius: 50%;
+  animation: Spin 1.2s linear infinite;
+}
