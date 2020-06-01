@@ -11,19 +11,22 @@ const Form = ({ history }) => {
   const [uso, setUso] = useState();
   const [conocidoPor, setConocidoPor] = useState();
   const [sent, setSent] = useState();
+  const [sending, setSending] = useState();
+  const [err, setErr] = useState();
   const { register, handleSubmit, errors } = useForm({
     mode: 'onChange' || 'onSubmit',
   });
 
   const onSubmit = (values) => {
+    setSending(true);
     Request.post(
       '/send-mail/',
       { ...values, rep: order.map((item) => item.id) },
-      (err) => {
-        if (err) {
-          console.log('Hubo un error en la solicitud intentelo de nuevo');
+      ({ data, error }) => {
+        setSending(false);
+        if (error) {
+          setErr(true);
         } else {
-          cleanOrder();
           setSent(true);
         }
       }
@@ -31,14 +34,26 @@ const Form = ({ history }) => {
   };
 
   useEffect(() => {
-    if (order && order.length <= 0) {
+    setErr(false);
+    setSent(false);
+  }, []);
+
+  useEffect(() => {
+    if (order && order.length <= 0 && !sent) {
       history.push('/');
     }
     // eslint-disable-next-line
-  }, [order]);
+  }, [order, sent]);
+
+  useEffect(() => {
+    if (sent) {
+      cleanOrder();
+    }
+    // eslint-disable-next-line
+  }, [sent]);
 
   return (
-    <section className="form-page">
+    <section className="form-page min-page-height">
       <h2 className="form-page__title">
         Solicitud de conjunto de datos{sent ? ' exitosa' : ''}
       </h2>
@@ -419,9 +434,24 @@ const Form = ({ history }) => {
               <span className="warning">{errors.conocido_por.message}</span>
             )}
           </div>
-          <button type="submit" className="form-page__button">
-            Enviar solicitud
+          <button
+            type="submit"
+            className={`form-page__button ${
+              sending ? 'form-page__button--disabled' : ''
+            }`}
+            disabled={sending}
+          >
+            {sending ? (
+              <div className="loading" />
+            ) : (
+              <span>Enviar solicitud</span>
+            )}
           </button>
+          {err && (
+            <span className="warning">
+              Hubo un error al enviar el formulario, por favor intente más tarde
+            </span>
+          )}
         </form>
       )}
     </section>
