@@ -60,10 +60,15 @@
         height: 100%;
         padding: 1em;
         color: var(--white);
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.2);
 
         h3 {
           color: var(--white);
+          transition: all 0.2s ease-in-out;
+        }
+
+        &:hover h3 {
+          font-size: 1.4em;
         }
       }
     }
