@@ -24,10 +24,10 @@ const Form = ({ history }) => {
       { ...values, rep: order.map((item) => item.id) },
       ({ data, error }) => {
         setSending(false);
-        if (error) {
-          setErr(true);
-        } else {
+        if (data) {
           setSent(true);
+        } else if (error) {
+          setErr(true);
         }
       }
     );

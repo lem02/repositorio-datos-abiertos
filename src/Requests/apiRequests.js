@@ -16,10 +16,12 @@ const Request = {
         if (res.status === 200 || res.status === 204) {
           callback({ data: res.data });
         } else {
-          callback({ error: res.status });
+          callback({ error: true });
         }
       })
-      .catch(console.log);
+      .catch(() => {
+        callback({ error: true });
+      });
   },
   post: (path, data, callback) => {
     axios
@@ -28,10 +30,12 @@ const Request = {
         if (res.status === 200 || res.status === 204) {
           callback({ data: res.data });
         } else {
-          callback({ error: res.status });
+          callback({ error: true });
         }
       })
-      .catch(console.log);
+      .catch(() => {
+        callback({ error: true });
+      });
   },
 };
 
