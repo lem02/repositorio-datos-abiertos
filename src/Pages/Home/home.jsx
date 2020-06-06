@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { SiteContext } from '../../Context/siteContext';
 import Request from '../../Requests/apiRequests';
+import banner from '../../Assets/1440x600.jpg';
+import bannerMobile from '../../Assets/500x500.jpg';
 import './home.scss';
 
 const Home = () => {
+  const { breakpoint } = useContext(SiteContext);
   const [popular, setPopular] = useState();
 
   useEffect(() => {
@@ -20,7 +24,7 @@ const Home = () => {
     <section className="home max-page-width min-page-height">
       <figure className="home__banner">
         <img
-          src="https://thumbs.dreamstime.com/z/concepto-ligado-de-open-data-con-el-gr%C3%A1fico-del-conocimiento-en-fondo-los-datos-enlazados-son-un-acercamiento-publicar-y-142786291.jpg"
+          src={breakpoint.small ? bannerMobile : banner}
           alt="Banner datos abiertos"
         />
       </figure>

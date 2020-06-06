@@ -18,17 +18,21 @@
     .header__content__logo {
       display: flex;
       align-items: center;
-      width: 8.4em;
+      width: 16em;
       height: 100%;
-      margin-left: 2em;
+      margin-left: 1em;
+
+      @include from-desktop {
+        margin-left: 2em;
+      }
 
       img {
-        height: 100%;
-        width: auto;
-        transition: all ease-in-out 0.1s;
+        height: auto;
+        width: 98%;
+        transition: all ease-in-out 0.2s;
 
         &:hover {
-          height: 104%;
+          width: 100%;
         }
       }
     }
@@ -37,14 +41,14 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      width: calc(100% - 10.4em);
+      width: calc(100% - 16em);
       padding-right: 1em;
 
       &::before {
         content: '';
       }
 
-      @include from-tablet {
+      @include from-desktop {
         justify-content: space-between;
         padding-right: 2em;
       }

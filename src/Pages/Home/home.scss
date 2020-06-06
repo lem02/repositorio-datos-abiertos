@@ -2,9 +2,6 @@
   .home__banner {
     position: relative;
     width: 100%;
-    height: 50vh;
-    object-position: top;
-    overflow: hidden;
 
     &::before {
       position: absolute;
@@ -15,10 +12,8 @@
     }
 
     img {
-      object-fit: cover;
-      object-position: 50% 40%;
       width: 100%;
-      height: 100%;
+      height: auto;
     }
   }
 

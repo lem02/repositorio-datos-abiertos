@@ -16,7 +16,7 @@
       box-shadow: none;
     }
 
-    @include from-tablet {
+    @include from-desktop {
       display: none;
     }
   }
@@ -37,7 +37,7 @@
     transform: scaleX(0);
     transition: all ease-in-out 0.3s;
 
-    @include from-tablet {
+    @include from-desktop {
       position: relative;
       top: 0;
       left: 0;
