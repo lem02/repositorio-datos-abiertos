@@ -2,8 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { SiteContext } from '../../Context/siteContext';
 import Request from '../../Requests/apiRequests';
-import banner from '../../Assets/1440x600.jpg';
-import bannerMobile from '../../Assets/500x500.jpg';
+import banner from '../../Assets/banner.png';
+import bannerMobile from '../../Assets/banner-mobile.png';
 import './home.scss';
 
 const Home = () => {
