@@ -2,8 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { SiteContext } from '../../Context/siteContext';
 import Request from '../../Requests/apiRequests';
-import banner from '../../Assets/banner.png';
-import bannerMobile from '../../Assets/banner-mobile.png';
 import './home.scss';
 
 const Home = () => {
@@ -24,7 +22,11 @@ const Home = () => {
     <section className="home max-page-width min-page-height">
       <figure className="home__banner">
         <img
-          src={breakpoint.small ? bannerMobile : banner}
+          src={
+            breakpoint.small
+              ? 'https://drive.google.com/uc?id=123sP5PiyL7SDsca8hqli0a4BQz1eGYmQ'
+              : 'https://drive.google.com/uc?id=1etdvdxNiudVWiigGEWAgJOuZ-WX5ytBN'
+          }
           alt="Banner datos abiertos"
         />
       </figure>
