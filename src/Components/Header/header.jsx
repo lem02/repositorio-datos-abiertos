@@ -9,10 +9,7 @@ const Header = () => {
     <header className="header">
       <div className="header__content max-page-width">
         <Link to="/" className="header__content__logo">
-          <img
-            src="https://drive.google.com/uc?id=14WJIs566FE-WjUiNAUib-TbRls1tcDFX"
-            alt="Logo Datos Abiertos UdeA"
-          />
+          <img src="/img/logo.png" alt="Logo Datos Abiertos UdeA" />
         </Link>
         <div className="header__content__options">
           <SearchBar />

@@ -22,11 +22,7 @@ const Home = () => {
     <section className="home max-page-width min-page-height">
       <figure className="home__banner">
         <img
-          src={
-            breakpoint.small
-              ? 'https://drive.google.com/uc?id=123sP5PiyL7SDsca8hqli0a4BQz1eGYmQ'
-              : 'https://drive.google.com/uc?id=1etdvdxNiudVWiigGEWAgJOuZ-WX5ytBN'
-          }
+          src={breakpoint.small ? '/img/banner-mobile.jpg' : '/img/banner.jpg'}
           alt="Banner datos abiertos"
         />
       </figure>
