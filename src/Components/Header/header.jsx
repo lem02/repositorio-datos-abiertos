@@ -9,7 +9,10 @@ const Header = () => {
     <header className="header">
       <div className="header__content max-page-width">
         <Link to="/" className="header__content__logo">
-          <img src="/img/logo.png" alt="Logo Datos Abiertos UdeA" />
+          <img
+            src={`${process.env.REACT_APP_API_URL}/img/logo.png`}
+            alt="Logo Datos Abiertos UdeA"
+          />
         </Link>
         <div className="header__content__options">
           <SearchBar />

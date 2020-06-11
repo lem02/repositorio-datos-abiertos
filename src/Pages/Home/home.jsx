@@ -22,7 +22,9 @@ const Home = () => {
     <section className="home max-page-width min-page-height">
       <figure className="home__banner">
         <img
-          src={breakpoint.small ? '/img/banner-mobile.jpg' : '/img/banner.jpg'}
+          src={`${process.env.REACT_APP_API_URL}/img/${
+            breakpoint.small ? 'banner-mobile.jpg' : 'banner.jpg'
+          }`}
           alt="Banner datos abiertos"
         />
       </figure>
