@@ -33,7 +33,7 @@ const Home = () => {
         <div className="home__section__container">
           <article className="home__section__item">
             <img
-              src="/img/inscripciones.jpg"
+              src={`${process.env.REACT_APP_API_URL}/img/inscripciones.jpg`}
               alt=""
               className="home__section__item__bg-img"
             />
@@ -43,7 +43,7 @@ const Home = () => {
           </article>
           <article className="home__section__item">
             <img
-              src="/img/matriculados.jpg"
+              src={`${process.env.REACT_APP_API_URL}/img/matriculados.jpg`}
               alt=""
               className="home__section__item__bg-img"
             />
@@ -53,7 +53,7 @@ const Home = () => {
           </article>
           <article className="home__section__item">
             <img
-              src="/img/graduados.jpg"
+              src={`${process.env.REACT_APP_API_URL}/img/graduados.jpg`}
               alt=""
               className="home__section__item__bg-img"
             />
@@ -63,7 +63,7 @@ const Home = () => {
           </article>
           <article className="home__section__item">
             <img
-              src="/img/profesores.jpg"
+              src={`${process.env.REACT_APP_API_URL}/img/profesores.jpg`}
               alt=""
               className="home__section__item__bg-img"
             />
@@ -73,7 +73,7 @@ const Home = () => {
           </article>
           <article className="home__section__item">
             <img
-              src="/img/empleados.jpg"
+              src={`${process.env.REACT_APP_API_URL}/img/empleados.jpg`}
               alt=""
               className="home__section__item__bg-img"
             />
@@ -101,7 +101,7 @@ const Home = () => {
             popular.map((repo, index) => (
               <article key={index} className="home__section__item">
                 <img
-                  src={`/img/${repo.img}`}
+                  src={`${process.env.REACT_APP_API_URL}/img/${repo.img}`}
                   alt=""
                   className="home__section__item__bg-img"
                 />
