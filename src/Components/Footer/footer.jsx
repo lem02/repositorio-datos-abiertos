@@ -10,7 +10,11 @@ const Footer = () => {
       </p>
       <p>
         <span>Consulta nuestra </span>
-        <a href="http://www.udea.edu.co/wps/portal/udea/web/inicio/institucional/politica-tratamiento-datos-personales">
+        <a
+          href="http://www.udea.edu.co/wps/portal/udea/web/inicio/institucional/politica-tratamiento-datos-personales"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           política de tratamiento de datos personales
         </a>
       </p>

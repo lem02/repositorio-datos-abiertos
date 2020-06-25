@@ -68,7 +68,7 @@ const Form = ({ history }) => {
             del uso de estos repositorios.
           </p>
           <p>Agradecemos tu apoyo a nuestra iniciativa.</p>
-          <p>Con cariño, El equipo de trabajo de Data UdeA</p>
+          <p>Con cariño, el equipo de trabajo de Data UdeA</p>
         </section>
       ) : (
         <form onSubmit={handleSubmit(onSubmit)} className="form-page__form">
