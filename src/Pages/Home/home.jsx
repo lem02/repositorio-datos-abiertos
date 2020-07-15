@@ -29,7 +29,7 @@ const Home = () => {
         />
       </figure>
       <section className="home__section">
-        <h2 className="home__section__title">Principales Categorías</h2>
+        <h2 className="home__section__title">Categorías de Datos Abiertos</h2>
         <div className="home__section__container">
           <article className="home__section__item">
             <img
@@ -94,7 +94,7 @@ const Home = () => {
         </p>
       </section>
       <section className="home__section">
-        <h2 className="home__section__title">Los más descargados</h2>
+        <h2 className="home__section__title">Repositorios más descargados</h2>
         <div className="home__section__container">
           {popular &&
             popular.length > 0 &&
